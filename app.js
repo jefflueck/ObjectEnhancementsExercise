@@ -56,12 +56,23 @@ const s = createAnimal('sheep', 'bleet', 'BAAAAaaaa');
 // {species: "sheep", bleet: ƒ}
 s.bleet(); //"BAAAAaaaa"
 
-// close
 function createAnimal(species, verb, noise) {
   return {
     species,
   },
-  makeNoise(verb){
-    [verb]noise
+  // I don't understand why this is invalid below this line.
+  animalSound(verb){
+    return verb[noise];
+  }
+}
+
+// Solution given.
+function createAnimal(species, verb, noise){
+  return {
+    species,
+    // Confused based on this how this function is being used in the code and how it is setting what is expected.
+    [verb](){
+      return noise;
+    }
   }
 }
